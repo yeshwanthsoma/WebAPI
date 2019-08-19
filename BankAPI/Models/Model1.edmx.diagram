@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="831239c0a1af49d59551084f45fa9c6f" Name="Diagram1">
+        <EntityTypeShape EntityType="OnlineBankModel.accountDetail" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineBankModel.accountTypeDetail" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineBankModel.branchDetail" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineBankModel.loginDetail" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineBankModel.transactionDetail" Width="1.5" PointX="7.5" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineBankModel.userDetail" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="OnlineBankModel.FK__accountDetails_accType" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineBankModel.FK__transacti__desti__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineBankModel.FK__transacti__sourc__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineBankModel.FK_accountDetails_customerId" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineBankModel.FK__userDetai__branc__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineBankModel.FK__userDetai__email__1ED998B2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

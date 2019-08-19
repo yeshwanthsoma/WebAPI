@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OnlineBankModelStoreContainer" CdmEntityContainer="OnlineBankEntities1">
+    <EntitySetMapping Name="accountDetails">
+      <EntityTypeMapping TypeName="OnlineBankModel.accountDetail">
+        <MappingFragment StoreEntitySet="accountDetails">
+          <ScalarProperty Name="accountNumber" ColumnName="accountNumber" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="editedDate" ColumnName="editedDate" />
+          <ScalarProperty Name="accountStatus" ColumnName="accountStatus" />
+          <ScalarProperty Name="closingDate" ColumnName="closingDate" />
+          <ScalarProperty Name="accountBalance" ColumnName="accountBalance" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="updatedBy" ColumnName="updatedBy" />
+          <ScalarProperty Name="accountType" ColumnName="accountType" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="accountTypeDetails">
+      <EntityTypeMapping TypeName="OnlineBankModel.accountTypeDetail">
+        <MappingFragment StoreEntitySet="accountTypeDetails">
+          <ScalarProperty Name="accountType" ColumnName="accountType" />
+          <ScalarProperty Name="lowerBound" ColumnName="lowerBound" />
+          <ScalarProperty Name="upperBound" ColumnName="upperBound" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="branchDetails">
+      <EntityTypeMapping TypeName="OnlineBankModel.branchDetail">
+        <MappingFragment StoreEntitySet="branchDetails">
+          <ScalarProperty Name="branchId" ColumnName="branchId" />
+          <ScalarProperty Name="branchName" ColumnName="branchName" />
+          <ScalarProperty Name="assigned" ColumnName="assigned" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loginDetails">
+      <EntityTypeMapping TypeName="OnlineBankModel.loginDetail">
+        <MappingFragment StoreEntitySet="loginDetails">
+          <ScalarProperty Name="loginId" ColumnName="loginId" />
+          <ScalarProperty Name="loginPassword" ColumnName="loginPassword" />
+          <ScalarProperty Name="userRole" ColumnName="userRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transactionDetails">
+      <EntityTypeMapping TypeName="OnlineBankModel.transactionDetail">
+        <MappingFragment StoreEntitySet="transactionDetails">
+          <ScalarProperty Name="transactionId" ColumnName="transactionId" />
+          <ScalarProperty Name="transactionDate" ColumnName="transactionDate" />
+          <ScalarProperty Name="transactionType" ColumnName="transactionType" />
+          <ScalarProperty Name="transactionAuthorizedBy" ColumnName="transactionAuthorizedBy" />
+          <ScalarProperty Name="sourceAccountNumber" ColumnName="sourceAccountNumber" />
+          <ScalarProperty Name="destinationAccountNumber" ColumnName="destinationAccountNumber" />
+          <ScalarProperty Name="transactionAmount" ColumnName="transactionAmount" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userDetails">
+      <EntityTypeMapping TypeName="OnlineBankModel.userDetail">
+        <MappingFragment StoreEntitySet="userDetails">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="pincode" ColumnName="pincode" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="editedDate" ColumnName="editedDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="editedBy" ColumnName="editedBy" />
+          <ScalarProperty Name="emailId" ColumnName="emailId" />
+          <ScalarProperty Name="branchId" ColumnName="branchId" />
+          <ScalarProperty Name="managerId" ColumnName="managerId" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="addDetails" FunctionName="OnlineBankModel.Store.addDetails" />
+    <FunctionImportMapping FunctionImportName="checkCust" FunctionName="OnlineBankModel.Store.checkCust" />
+    <FunctionImportMapping FunctionImportName="checkMedal" FunctionName="OnlineBankModel.Store.checkMedal" />
+    <FunctionImportMapping FunctionImportName="datecheck" FunctionName="OnlineBankModel.Store.datecheck" />
+    <FunctionImportMapping FunctionImportName="dateChecker2" FunctionName="OnlineBankModel.Store.dateChecker2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OnlineBankModel.dateChecker2_Result">
+          <ScalarProperty Name="transactionId" ColumnName="transactionId" />
+          <ScalarProperty Name="sourceAccountNumber" ColumnName="sourceAccountNumber" />
+          <ScalarProperty Name="destinationAccountNumber" ColumnName="destinationAccountNumber" />
+          <ScalarProperty Name="transactionDate" ColumnName="transactionDate" />
+          <ScalarProperty Name="transactionAmount" ColumnName="transactionAmount" />
+          <ScalarProperty Name="transactionType" ColumnName="transactionType" />
+          <ScalarProperty Name="comments" ColumnName="comments" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="EditAccountDetails" FunctionName="OnlineBankModel.Store.EditAccountDetails" />
+  </EntityContainerMapping>
+</Mapping>

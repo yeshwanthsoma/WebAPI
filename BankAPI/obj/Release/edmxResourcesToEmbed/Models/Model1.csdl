@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OnlineBankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="accountDetail">
+    <Key>
+      <PropertyRef Name="accountNumber" />
+    </Key>
+    <Property Name="accountNumber" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="createdDate" Type="DateTime" Precision="3" />
+    <Property Name="editedDate" Type="DateTime" Precision="3" />
+    <Property Name="accountStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="closingDate" Type="DateTime" Precision="3" />
+    <Property Name="accountBalance" Type="Int64" />
+    <Property Name="createdBy" Type="Int32" />
+    <Property Name="updatedBy" Type="Int32" />
+    <Property Name="accountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="accountTypeDetail" Relationship="Self.FK__accountDetails_accType" FromRole="accountDetails" ToRole="accountTypeDetails" />
+    <NavigationProperty Name="transactionDetails" Relationship="Self.FK__transacti__desti__1BFD2C07" FromRole="accountDetails" ToRole="transactionDetails" />
+    <NavigationProperty Name="transactionDetails1" Relationship="Self.FK__transacti__sourc__1CF15040" FromRole="accountDetails" ToRole="transactionDetails" />
+    <NavigationProperty Name="userDetail" Relationship="Self.FK_accountDetails_customerId" FromRole="accountDetails" ToRole="userDetails" />
+  </EntityType>
+  <EntityType Name="accountTypeDetail">
+    <Key>
+      <PropertyRef Name="accountType" />
+    </Key>
+    <Property Name="accountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lowerBound" Type="Int64" />
+    <Property Name="upperBound" Type="Int64" />
+    <NavigationProperty Name="accountDetails" Relationship="Self.FK__accountDetails_accType" FromRole="accountTypeDetails" ToRole="accountDetails" />
+  </EntityType>
+  <EntityType Name="branchDetail">
+    <Key>
+      <PropertyRef Name="branchId" />
+    </Key>
+    <Property Name="branchId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="branchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="assigned" Type="Int32" />
+    <NavigationProperty Name="userDetails" Relationship="Self.FK__userDetai__branc__1DE57479" FromRole="branchDetails" ToRole="userDetails" />
+  </EntityType>
+  <EntityType Name="loginDetail">
+    <Key>
+      <PropertyRef Name="loginId" />
+    </Key>
+    <Property Name="loginId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="loginPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="userRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="userDetails" Relationship="Self.FK__userDetai__email__1ED998B2" FromRole="loginDetails" ToRole="userDetails" />
+  </EntityType>
+  <EntityType Name="transactionDetail">
+    <Key>
+      <PropertyRef Name="transactionId" />
+    </Key>
+    <Property Name="transactionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="transactionDate" Type="DateTime" Precision="3" />
+    <Property Name="transactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="transactionAuthorizedBy" Type="Int32" />
+    <Property Name="sourceAccountNumber" Type="Int64" />
+    <Property Name="destinationAccountNumber" Type="Int64" />
+    <Property Name="transactionAmount" Type="Int32" />
+    <Property Name="comments" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="accountDetail" Relationship="Self.FK__transacti__desti__1BFD2C07" FromRole="transactionDetails" ToRole="accountDetails" />
+    <NavigationProperty Name="accountDetail1" Relationship="Self.FK__transacti__sourc__1CF15040" FromRole="transactionDetails" ToRole="accountDetails" />
+  </EntityType>
+  <EntityType Name="userDetail">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pincode" Type="Int32" />
+    <Property Name="createdDate" Type="DateTime" Precision="3" />
+    <Property Name="editedDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int32" />
+    <Property Name="editedBy" Type="Int32" />
+    <Property Name="emailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="branchId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="managerId" Type="Int32" />
+    <Property Name="phoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="accountDetails" Relationship="Self.FK_accountDetails_customerId" FromRole="userDetails" ToRole="accountDetails" />
+    <NavigationProperty Name="branchDetail" Relationship="Self.FK__userDetai__branc__1DE57479" FromRole="userDetails" ToRole="branchDetails" />
+    <NavigationProperty Name="loginDetail" Relationship="Self.FK__userDetai__email__1ED998B2" FromRole="userDetails" ToRole="loginDetails" />
+  </EntityType>
+  <Association Name="FK__accountDetails_accType">
+    <End Role="accountTypeDetails" Type="Self.accountTypeDetail" Multiplicity="0..1" />
+    <End Role="accountDetails" Type="Self.accountDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="accountTypeDetails">
+        <PropertyRef Name="accountType" />
+      </Principal>
+      <Dependent Role="accountDetails">
+        <PropertyRef Name="accountType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__desti__1BFD2C07">
+    <End Role="accountDetails" Type="Self.accountDetail" Multiplicity="0..1" />
+    <End Role="transactionDetails" Type="Self.transactionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="accountDetails">
+        <PropertyRef Name="accountNumber" />
+      </Principal>
+      <Dependent Role="transactionDetails">
+        <PropertyRef Name="destinationAccountNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__sourc__1CF15040">
+    <End Role="accountDetails" Type="Self.accountDetail" Multiplicity="0..1" />
+    <End Role="transactionDetails" Type="Self.transactionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="accountDetails">
+        <PropertyRef Name="accountNumber" />
+      </Principal>
+      <Dependent Role="transactionDetails">
+        <PropertyRef Name="sourceAccountNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_accountDetails_customerId">
+    <End Role="userDetails" Type="Self.userDetail" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="accountDetails" Type="Self.accountDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userDetails">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="accountDetails">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__userDetai__branc__1DE57479">
+    <End Role="branchDetails" Type="Self.branchDetail" Multiplicity="0..1" />
+    <End Role="userDetails" Type="Self.userDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branchDetails">
+        <PropertyRef Name="branchId" />
+      </Principal>
+      <Dependent Role="userDetails">
+        <PropertyRef Name="branchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__userDetai__email__1ED998B2">
+    <End Role="loginDetails" Type="Self.loginDetail" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="userDetails" Type="Self.userDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loginDetails">
+        <PropertyRef Name="loginId" />
+      </Principal>
+      <Dependent Role="userDetails">
+        <PropertyRef Name="emailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OnlineBankEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="accountDetails" EntityType="Self.accountDetail" />
+    <EntitySet Name="accountTypeDetails" EntityType="Self.accountTypeDetail" />
+    <EntitySet Name="branchDetails" EntityType="Self.branchDetail" />
+    <EntitySet Name="loginDetails" EntityType="Self.loginDetail" />
+    <EntitySet Name="transactionDetails" EntityType="Self.transactionDetail" />
+    <EntitySet Name="userDetails" EntityType="Self.userDetail" />
+    <AssociationSet Name="FK__accountDetails_accType" Association="Self.FK__accountDetails_accType">
+      <End Role="accountTypeDetails" EntitySet="accountTypeDetails" />
+      <End Role="accountDetails" EntitySet="accountDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__desti__1BFD2C07" Association="Self.FK__transacti__desti__1BFD2C07">
+      <End Role="accountDetails" EntitySet="accountDetails" />
+      <End Role="transactionDetails" EntitySet="transactionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__sourc__1CF15040" Association="Self.FK__transacti__sourc__1CF15040">
+      <End Role="accountDetails" EntitySet="accountDetails" />
+      <End Role="transactionDetails" EntitySet="transactionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_accountDetails_customerId" Association="Self.FK_accountDetails_customerId">
+      <End Role="userDetails" EntitySet="userDetails" />
+      <End Role="accountDetails" EntitySet="accountDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__userDetai__branc__1DE57479" Association="Self.FK__userDetai__branc__1DE57479">
+      <End Role="branchDetails" EntitySet="branchDetails" />
+      <End Role="userDetails" EntitySet="userDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__userDetai__email__1ED998B2" Association="Self.FK__userDetai__email__1ED998B2">
+      <End Role="loginDetails" EntitySet="loginDetails" />
+      <End Role="userDetails" EntitySet="userDetails" />
+    </AssociationSet>
+    <FunctionImport Name="addDetails">
+      <Parameter Name="accounttype" Mode="In" Type="String" />
+      <Parameter Name="DateOfOpen" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="dateOfEdited" Mode="In" Type="String" />
+      <Parameter Name="ClosingDate" Mode="In" Type="String" />
+      <Parameter Name="amount" Mode="In" Type="Int32" />
+      <Parameter Name="type" Mode="In" Type="String" />
+      <Parameter Name="MUserId" Mode="In" Type="Int32" />
+      <Parameter Name="CUserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="checkCust" ReturnType="Collection(String)">
+      <Parameter Name="customerID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="checkMedal" ReturnType="Collection(String)">
+      <Parameter Name="amt" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="datecheck">
+      <Parameter Name="acc" Mode="In" Type="Int64" />
+      <Parameter Name="start" Mode="In" Type="String" />
+      <Parameter Name="end" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="dateChecker2" ReturnType="Collection(OnlineBankModel.dateChecker2_Result)">
+      <Parameter Name="acc" Mode="In" Type="Int64" />
+      <Parameter Name="start" Mode="In" Type="String" />
+      <Parameter Name="end" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EditAccountDetails">
+      <Parameter Name="accountNo" Mode="In" Type="Int64" />
+      <Parameter Name="accounttype" Mode="In" Type="String" />
+      <Parameter Name="type" Mode="In" Type="String" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="dateOfEdited" Mode="In" Type="String" />
+      <Parameter Name="ClosingDate" Mode="In" Type="String" />
+      <Parameter Name="amount" Mode="In" Type="Int32" />
+      <Parameter Name="MuserId" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="dateChecker2_Result">
+    <Property Type="Int64" Name="transactionId" Nullable="false" />
+    <Property Type="Int64" Name="sourceAccountNumber" Nullable="true" />
+    <Property Type="Int64" Name="destinationAccountNumber" Nullable="true" />
+    <Property Type="DateTime" Name="transactionDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="transactionAmount" Nullable="true" />
+    <Property Type="String" Name="transactionType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="comments" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>
