@@ -62,9 +62,6 @@ namespace BankAPI.Controllers
                 }
 
         }
-       
-       
-
 
     }
 }

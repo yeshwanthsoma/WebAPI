@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="831239c0a1af49d59551084f45fa9c6f" Name="Diagram1">
-        <EntityTypeShape EntityType="OnlineBankModel.accountDetail" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineBankModel.accountDetail" Width="1.5" PointX="5.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="OnlineBankModel.accountTypeDetail" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OnlineBankModel.branchDetail" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OnlineBankModel.loginDetail" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OnlineBankModel.transactionDetail" Width="1.5" PointX="7.5" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineBankModel.transactionDetail" Width="1.5" PointX="8.5" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="OnlineBankModel.userDetail" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
         <AssociationConnector Association="OnlineBankModel.FK__accountDetails_accType" ManuallyRouted="false" />
         <AssociationConnector Association="OnlineBankModel.FK__transacti__desti__1BFD2C07" ManuallyRouted="false" />
